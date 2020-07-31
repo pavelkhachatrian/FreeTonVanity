@@ -13,7 +13,7 @@
 ```
 ### Simple run
 ```./address_gen -c "/Users/pavel/CLionProjects/FreeTonVanity/SetcodeMultisigWallet.tvc" -m true -t 8```
-Start address generator with 8 threads, output saves to csv
+Start address generator with 8 threads, output saved to csv
 ## !! PostgreSQL and Redis backend not implemented yet  
 TODO:
  - Implement Redis and PostgreSQL backend for storing results
