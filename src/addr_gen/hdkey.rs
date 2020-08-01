@@ -5,6 +5,7 @@ use byteorder::{BigEndian, ByteOrder, LittleEndian};
 use pbkdf2::pbkdf2;
 use secp256k1::{PublicKey, SecretKey};
 use ed25519_dalek::Keypair;
+use tweetnacl;
 
 #[allow(non_snake_case)]
 pub struct KeyPair {
@@ -47,7 +48,7 @@ pub fn sign_keypair_from_secret_key(secret: [u8; 32]) -> KeyPair {
     let seed = key256(&secret);
     let mut sk = [0u8; 64];
     let mut pk = [0u8; 32];
-    sodalite::sign_keypair_seed(&mut pk, &mut sk, &seed);
+    tweetnacl::sign_keypair_seed(&mut pk, &mut sk, &seed);
     let mut sk_:[u8; 32] = Default::default();
     sk_.copy_from_slice(sk[..32].as_ref());
     KeyPair::new(hex::encode(pk), hex::encode(sk_))
